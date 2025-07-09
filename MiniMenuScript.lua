@@ -1,6 +1,6 @@
 -- CONFIGURAÇÃO
 local flySpeed = 7
-local keyVerificacaoURL = "https://ae0c06aa-b03c-4de4-96f4-58f6064937d7-00-3szotp5duaqa7.picard.replit.dev/" -- Altere para seu site
+local keyVerificacaoURL = "https://ae0c06aa-b03c-4de4-96f4-58f6064937d7-00-3szotp5duaqa7.picard.replit.dev/" -- Altere para seu link
 
 -- SERVIÇOS
 local player = game.Players.LocalPlayer
@@ -13,9 +13,10 @@ local bodyGyro, bodyVelocity
 local userKey = ""
 
 -- 🖼️ INTERFACE DE KEY
-local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "MiniMenuScript"
 screenGui.ResetOnSpawn = false
+screenGui.Parent = game:GetService("CoreGui")
 
 local background = Instance.new("Frame", screenGui)
 background.Size = UDim2.new(0, 260, 0, 140)
@@ -72,7 +73,6 @@ flyGui.TextColor3 = Color3.fromRGB(255, 0, 0)
 flyGui.BorderSizePixel = 0
 flyGui.ZIndex = 10
 flyGui.Visible = false
-
 flyGui.Parent = screenGui
 
 -- 🌐 Verifica key
@@ -80,6 +80,8 @@ local function validarKeyComServidor(key)
 	local ok, resposta = pcall(function()
 		return HttpService:GetAsync(keyVerificacaoURL .. key)
 	end)
+	print("Verificando key:", key)
+	print("Resposta do servidor:", resposta)
 	return ok and resposta == "VALID"
 end
 
@@ -90,12 +92,12 @@ local function iniciarFly()
 
 	bodyGyro = Instance.new("BodyGyro", HRP)
 	bodyGyro.P = 9e4
-	bodyGyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+	bodyGyro.MaxTorque = Vector3.new(9e9, 9e9, 9e9)
 	bodyGyro.CFrame = HRP.CFrame
 
 	bodyVelocity = Instance.new("BodyVelocity", HRP)
-	bodyVelocity.velocity = Vector3.new(0, 0, 0)
-	bodyVelocity.maxForce = Vector3.new(9e9, 9e9, 9e9)
+	bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+	bodyVelocity.MaxForce = Vector3.new(9e9, 9e9, 9e9)
 
 	game:GetService("RunService").RenderStepped:Connect(function()
 		if flying then
@@ -107,7 +109,7 @@ local function iniciarFly()
 			if UIS:IsKeyDown(Enum.KeyCode.D) then dir += cam.CFrame.RightVector end
 			if UIS:IsKeyDown(Enum.KeyCode.Space) then dir += Vector3.new(0,1,0) end
 			if UIS:IsKeyDown(Enum.KeyCode.LeftControl) then dir -= Vector3.new(0,1,0) end
-			bodyVelocity.Velocity = dir.Unit * flySpeed
+			bodyVelocity.Velocity = dir.Magnitude == 0 and Vector3.zero or dir.Unit * flySpeed
 			bodyGyro.CFrame = cam.CFrame
 		end
 	end)
