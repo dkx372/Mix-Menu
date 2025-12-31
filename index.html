@@ -1,237 +1,329 @@
-<!DOCTYPE html>  <html lang="pt-BR">  
-<head>  
-<meta charset="utf-8" />  
-<meta name="viewport" content="width=device-width,initial-scale=1" />  
-<title> GHOST XITER - Auxílio </title>  
-<style>  
-  :root {  
-    --pink: #ff4db4;  
-    --dark-bg: #0b0b10;  
-    --panel-bg: #1a1825;  
-    --text: #ffffff;  
-    --radius: 18px;  
-  }  
-  *{box-sizing:border-box}  
-  body{  
-    margin:0;  
-    min-height:100vh;  
-    display:flex;  
-    align-items:center;  
-    justify-content:center;  
-    background:var(--dark-bg);  
-    color:var(--text);  
-    font-family: "Poppins", system-ui, sans-serif;  
-  }  
-  .container{  
-    display:flex;  
-    background:var(--panel-bg);  
-    border-radius:var(--radius);  
-    box-shadow:0 0 40px var(--pink);  
-    overflow:hidden;  
-    width:380px;  
-  }  
-  .sidebar{  
-    display:flex;  
-    flex-direction:column;  
-    background:#2a2736;  
-    padding:20px 10px;  
-    gap:14px;  
-    min-width:90px;  
-    align-items:center;  
-  }  
-  .tab{  
-    background:none;border:none;color:var(--text);font-weight:600;padding:10px 0;width:100%;border-radius:10px;cursor:pointer;  
-  }  
-  .tab.active{background:var(--pink);color:#111}  
-  .content{flex:1;padding:25px;background:#181624}  
-  h1{text-align:center;color:var(--pink);font-size:1.6rem;text-transform:lowercase;margin:0 0 1.4rem}  
-  label{display:block;margin:6px 0;font-size:0.95rem}  
-  input[type="checkbox"]{accent-color:var(--pink);margin-right:6px}  
-  .fov{margin-top:12px}  
-  .fov span{color:var(--pink)}  
-  input[type="range"]{width:100%;accent-color:var(--pink);cursor:pointer}  
-  select{width:100%;background:#12101a;border:1px solid var(--pink);border-radius:8px;color:var(--text);padding:8px;margin-top:10px;font-size:0.9rem}  
-  button.inject{width:100%;background:linear-gradient(90deg,#ff4db4,#ff86cc);border:none;color:#111;font-weight:700;padding:14px;border-radius:10px;margin-top:18px;cursor:pointer;transition:transform .2s,box-shadow .3s}  
-  button.inject:hover{transform:scale(1.03);box-shadow:0 0 20px rgba(255,77,180,0.5)}  
-  @keyframes neonPulse{0%,100%{box-shadow:0 0 20px rgba(255,77,180,0.3)}50%{box-shadow:0 0 40px rgba(255,77,180,0.7)}}  
-  .container{animation:neonPulse 3s infinite ease-in-out}  
-  @media (max-width:480px){.container{width:90%;flex-direction:column}.sidebar{flex-direction:row;padding:10px}.tab{flex:1;text-align:center}}  
-  /* simples modal de fallback */  
-  .modal{  
-    position:fixed;left:0;top:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);  
-  }  
-  .modal .box{background:#11101a;padding:18px;border-radius:12px;border:1px solid var(--pink);max-width:360px;text-align:center}  
-  .modal button{margin-top:12px;padding:10px 14px;border-radius:8px;border:none;background:var(--pink);color:#111;font-weight:700;cursor:pointer}  
-</style>  
-</head>  <div id="keyScreen" style="
-  position:fixed;
-  inset:0;
-  background:#0b0b10;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-family:Poppins, sans-serif;
-">
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>IOS</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="mercado_pago_icon.png">
+    <meta name="apple-mobile-web-app-title" content="Mercado Pago">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* (mantive seu CSS original, só cortei comentário) */
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            width: 350px;
+            padding: 40px 30px;
+            background: linear-gradient(to bottom, #b80000, #111);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            position: relative;
+        }
+        .login-title {
+            color: #000;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .login-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ff2d2d;
+            border-radius: 8px;
+            background: #111;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        .login-input:focus {
+            outline: none;
+            border-color: #ff3838;
+            box-shadow: 0 0 0 6px rgba(255,56,56,0.18);
+        }
+        .login-input::placeholder { color: #888; }
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #b30000 0%, #111 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .login-btn:hover {
+            background: linear-gradient(90deg, #ff0000 0%, #b30000 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+        .cancel-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            color: #ccc;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .cancel-btn:hover { background: #333; color: #fff; }
+        .error-message { color: #ff4444; font-size: 14px; margin-top: 10px; opacity: 0; transition: opacity 0.3s ease; }
+        .error-message.show { opacity: 1; }
 
-  <h2 style="color:#ff4db4;">Insira sua KEY</h2>
+        .main-container {
+            display: none;
+            width: 340px;
+            padding: 0px 20px 20px 20px;
+            background: linear-gradient(to bottom, #b80000, #111);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            margin-top: 0px;
+            position: relative;
+        }
+        .main-container.show { display: block; }
+        h2 { text-align: center; color: #000; margin-bottom: 18px; padding-top: 15px; }
+        .top-btn-group { display: flex; gap: 12px; margin-bottom: 12px; }
+        .top-btn { flex: 1; background: linear-gradient(90deg, #b30000 0%, #111 100%); color: #fff; font-size: 15px; font-weight: bold; border: none; border-radius: 8px; padding: 6px 0; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.10); transition: background 0.2s, box-shadow 0.2s, transform 0.12s; }
+        .top-btn.active { background: linear-gradient(90deg, #ff0000 0%, #b30000 100%); box-shadow: 0 0 0 6px rgba(255,56,56,0.18); }
+        .option-block { margin-bottom: 18px; border-radius: 6px; padding: 14px 12px 10px 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); display: none; }
+        .option-block.open { display: block; }
+        .option-block p { margin-bottom: 8px; color: #ccc; font-size: 15px; }
+        .option-block p b { color: #fff; }
+        .checkbox-label, .slider-label, .select-label, .button-label { font-size: 16px; color: #fff; display: flex; align-items: center; margin-bottom: 8px; }
+        .checkbox-label input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ff2d2d; background: #111; outline: none; cursor: pointer; transition: border 0.2s, box-shadow 0.2s, backdrop-filter 0.2s, transform 0.12s; position: relative; margin-right: 10px; }
+        .checkbox-label input[type="checkbox"]:checked { background: radial-gradient(circle at 50% 50%, #ff2d2d 60%, #b30000 100%); border: 2px solid #b30000; box-shadow: 0 0 0 6px rgba(255,56,56,0.18); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); animation: pulse 1.5s infinite; }
+        .slider-container { display: flex; align-items: center; margin-bottom: 8px; }
+        .slider-label { display: block; margin-bottom: 8px; height: auto; overflow: visible; visibility: visible; }
+        .slider { flex-grow: 1; -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: transparent; outline: none; margin: 0 10px 0 0; transition: box-shadow 0.2s; }
+        .slider::-webkit-slider-runnable-track { width: 100%; height: 8px; background: linear-gradient(to right, #ff2d2d 0%, #b30000 var(--webkitProgressPercent), #555 var(--webkitProgressPercent), #555 100%); border-radius: 4px; border: none; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: linear-gradient(90deg, #b30000 0%, #ff2d2d 100%); border-radius: 50%; cursor: pointer; margin-top: -6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: box-shadow 0.2s; }
+        .slider-value { font-size: 16px; color: #fff; min-width: 30px; text-align: right; transition: transform 0.15s ease-out, color 0.15s ease-out; }
+        .slider-value.changed { transform: scale(1.1); color: #ff2d2d; }
+        .select { width: 100%; padding: 8px 10px; border-radius: 4px; border: 1px solid #ff2d2d; background: #111; color: #fff; font-size: 15px; margin-bottom: 8px; transition: box-shadow 0.2s, border 0.2s; cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOTIuMzYyIiBoZWlnaHQ9IjI5Mi4zNjIiPjxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0yODcuOTQ5LDE1NC4wOTlMMTU0LjA5LDI4Ny45NTFjLTIuOTIzLDIuOTIzLTYuNzY4LDQuMzg1LTEwLjYxMyw0LjM4NWMtMy44NDYsMC03LjY5Mi0xLjQ2Mi0xMC42MTUtNC4zODVMMC4zODcsMTU0LjA5OWMtNS44NDUtNS44NDQtNS44NDQtMTUuMzAzLDAtMjEuMTQ4YzUuODQ0LTUuODQ0LDE1LjMwMy01Ljg0NSwyMS4xNDgsMGwxMjEuODM1LDEyMS44MzRMMjY2LjgwMSwxMzIuOTVjNS44NDQtNS44NDUsMTUuMzAzLTUuODQ0LDIxLjE0NywwQzI5My43OTQsMTM4Ljc5NiwyOTMuNzk0LDE0OC4yNTYsMjg3Ljk0OSwxNTQuMDk5eiIvPjwvc3ZnPg=='); background-repeat: no-repeat; background-position: right 10px top 50%; background-size: 12px auto; }
+        .button-group { display: flex; gap: 10px; margin-bottom: 10px; }
+        .action-btn { flex: 1; padding: 8px 0; background: linear-gradient(90deg, #b30000 0%, #111 100%); color: #fff; border: none; border-radius: 4px; font-size: 15px; cursor: pointer; transition: background 0.2s, box-shadow 0.2s, transform 0.12s; }
+        .action-btn.selected { background: linear-gradient(90deg, #9c0000 0%, #b30000 100%); font-weight: bold; box-shadow: 0 0 0 6px rgba(255,56,56,0.18); animation: pulse 1.5s infinite; }
+        .inject-btn { width: 100%; padding: 10px 0; background: linear-gradient(90deg, #b30000 0%, #111 100%); color: #fff; border: none; border-radius: 5px; font-size: 17px; font-weight: bold; margin-top: 10px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.18); transition: background 0.2s, box-shadow 0.2s, transform 0.12s; }
+        .toast-container { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 90%; width: auto; }
+        .toast { background: linear-gradient(90deg, #a50000 0%, #111 100%); color: #fff; padding: 12px 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); font-size: 15px; opacity: 0.95; animation: fadeInOut 3s forwards; text-align: center; word-break: break-word; }
+        @keyframes fadeInOut { 0% { opacity: 0; transform: translateY(20px); } 10% { opacity: 0.95; transform: translateY(0); } 90% { opacity: 0.95; transform: translateY(0); } }
+        #fpsDisplay { position: fixed; bottom: 10px; left: 10px; color: red; font-size: 16px; z-index: 1000; }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginContainer">
+        <h1 class="login-title">GHOST XITERS</h1>
+        <form class="login-form" id="loginForm">
+            <input type="password" class="login-input" id="passwordInput" placeholder="Digite Sua Key:" required="">
+            <button type="submit" class="login-btn">Login</button>
+            <button type="button" class="cancel-btn" onclick="cancelLogin()">Cancelar</button>
+            <div class="error-message" id="errorMessage">Key incorreta!</div>
+        </form>
+    </div>
 
-  <input id="keyInput" type="password" placeholder="Digite a Key" 
-    style="padding:12px;border:2px solid #ff4db4;
-    background:#181624;color:white;border-radius:10px;
-    width:70%;max-width:250px;text-align:center;">
+    <div class="main-container" id="mainContainer">
+        <h2>AUXILIO GHOST XITERS</h2>
+        <div class="top-btn-group">
+            <button class="top-btn active" onclick="showSection('aimbotOptions', this)">Aimbot</button>
+            <button class="top-btn" onclick="showSection('sensiOptions', this)">Sensi</button>
+            <button class="top-btn" onclick="showSection('configOptions', this)">Config</button>
+            <button class="top-btn" onclick="showSection('extraOptions', this)">Extra</button>
+        </div>
 
-  <button onclick="checkKey()"
-    style="margin-top:15px;background:#ff4db4;
-    border:none;padding:10px 20px;border-radius:10px;
-    font-weight:700;cursor:pointer;color:#111;">
-      ENTRAR
-  </button>
+        <div class="option-block open" id="aimbotOptions">
+            <label class="checkbox-label"><input type="checkbox" onchange="updatePrompt(this, 'Aimbot Trick')"> Aimbot Trick</label>
+            <label class="checkbox-label"><input type="checkbox" onchange="updatePrompt(this, 'Silent Aim Trick ')"> Silent Aim Trick </label>
+            <label class="slider-label" for="aimSlider">Fov Valor:</label>
+            <div class="slider-container">
+                <input type="range" min="0" max="360" value="0" class="slider" id="aimSlider" oninput="
+                const valueSpan = document.getElementById('aimSliderValue');
+                valueSpan.innerText = this.value;
+                valueSpan.classList.remove('changed');
+                void valueSpan.offsetWidth;
+                valueSpan.classList.add('changed');
+                setTimeout(() => {
+                    valueSpan.classList.remove('changed');
+                }, 200);
+                this.style.setProperty('--webkitProgressPercent', ((this.value - this.min) / (this.max - this.min)) * 100 + '%');
+            " onchange="updateSliderValue(this)">
+                <span id="aimSliderValue" class="slider-value">0</span>
+            </div>
+            <label class="select-label" for="auxilioSelect">Auxílio:</label>
+            <select class="select" id="auxilioSelect" onchange="updatePromptSelect(this, 'Auxílio')">
+                <option value="head">Auxílio Head</option>
+                <option value="neck">Auxílio Neck</option>
+            </select>
+            <label class="select-label" for="prioridadeSelect">Prioridade:</label>
+            <select class="select" id="prioridadeSelect" onchange="updatePromptSelect(this, 'Prioridade')">
+                <option value="cabeca">Cabeça</option>
+                <option value="pescoco">Pescoço</option>
+                <option value="peito">Peito</option>
+            </select>
+            <div class="button-group">
+                <button class="action-btn" id="btnAtirar" onclick="toggleButton(this, 'Ao Atirar')" type="button">Ao Atirar</button>
+                <button class="action-btn" id="btnOlhar" onclick="toggleButton(this, 'Ao Olhar')" type="button">Ao Olhar</button>
+            </div>
+            <button class="inject-btn" onclick="injectFiles()" type="button">Inject Free Fire Files</button>
+        </div>
 
-  <p id="keyError" style="color:red;margin-top:10px;display:none;">
-    Key inválida!
-  </p>
+        <div class="option-block" id="configOptions">
+            <label class="checkbox-label"><input type="checkbox" onchange="updatePrompt(this, 'Auto headshot')"> Auto headshot</label>
+            <label class="checkbox-label"><input type="checkbox" onchange="updatePrompt(this, 'Recoil Control')"> Recoil Control</label>
+            <label class="checkbox-label"><input type="checkbox" onchange="updatePrompt(this, 'Strafe Auto')"> Strafe Auto</label>
+        </div>
 
-</div>
-<body> 
+        <div class="option-block" id="extraOptions">
+            <p><b>Modelo</b> : iPhone</p>
+            <p><b>Developer</b> :@dk.wq</p>
+            <p><b>tiktok</b>: </p>
+            <p><b>Versao</b> : 1.126.2</p>
+        </div>
 
-  </p>
-</div> 
-  <div class="container" role="application" aria-label="Painel sleepffz">  
-    <div class="sidebar" aria-hidden="false">  
-      <button class="tab active" data-tab="aimbot">aimbot</button>  
-      <button class="tab" data-tab="info">info</button>  
-    </div>  <div class="content" id="aimbot" style="display:block;">  
-  <h1>GHOST XITER Cheats - Auxílio</h1>  
+        <div class="option-block" id="sensiOptions">
+            <label class="checkbox-label"><input type="checkbox" onchange="updatePrompt(this, 'Sensi Alta')"> Sensi Alta</label>
+            <label class="checkbox-label"><input type="checkbox" onchange="updatePrompt(this, 'Sensi Media')"> Sensi Media</label>
+            <label class="checkbox-label"><input type="checkbox" onchange="updatePrompt(this, 'Sensi Baixa')"> Sensi Baixa</label>
+        </div>
+    </div>
 
-  <label><input type="checkbox"> Ativar Aimbot</label>  
-  <label><input type="checkbox"> NoRecoil</label>  
-  <label><input type="checkbox"> Aumentar precisão</label>  
-  <label><input type="checkbox"> Ignorar derrubados</label>  
+    <div class="toast-container" id="toastContainer"></div>
+    <div id="fpsDisplay">0 FPS</div>
 
-  <div class="fov" aria-live="polite">  
-    fov: [ <span id="fovValue">90.7</span> ]  
-    <input type="range" id="fov" min="10" max="180" step="0.1" value="90.7" aria-valuemin="10" aria-valuemax="180" />  
-  </div>  
+    <script>
+        const MOCKAPI_URL = "https://69321c4c11a8738467d18777.mockapi.io/keys";
+        let currentKeyEntry = null;
 
-  <select aria-label="Alvo">  
-    <option>Cabeça</option>  
-    <option>Pescoço</option>  
-    <option>Corpo</option>  
-  </select>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const rawKey = document.getElementById('passwordInput').value;
+            const key = (rawKey || '').trim();
+            const errorMessage = document.getElementById('errorMessage');
 
-<button class="inject" id="calibrarBtn">CALIBRAR MIRA</button>
+            if (!key) {
+                showError("Digite uma key!");
+                return;
+            }
 
-<button class="inject" id="injetarBtn">INJETAR</button>  
-</div>  
+            try {
+                // 1) tenta filtro direto (se o MockAPI estiver configurado para pesquisar por campo 'key')
+                const q = encodeURIComponent(key);
+                let res = await fetch(`${MOCKAPI_URL}?key=${q}`);
+                if (!res.ok) {
+                    // se a request falhar (CORS, 404, 500) tenta capturar status e mostrar mensagem amigável
+                    throw new Error("Erro na requisição: " + res.status);
+                }
+                let data = await res.json();
 
-<div class="content" id="info" style="display:none;">  
-  <h1>Informações</h1>  
-  <p><strong>Painel auxílio criado por GHOST XITER
-deixe o painel em segundo plano painel usuário Android </strong></p>  
-  <p>   
-</div>
+                // 2) Se não encontrou, tenta buscar todos e procurar localmente (fallback)
+                if (!data || data.length === 0) {
+                    const fallbackRes = await fetch(MOCKAPI_URL);
+                    if (!fallbackRes.ok) throw new Error("Erro ao buscar keys (fallback).");
+                    const all = await fallbackRes.json();
+                    // compara tratando espaços e sem case-sensitive
+                    const found = all.find(item => {
+                        if (!item || typeof item.key === 'undefined') return false;
+                        const itemKey = String(item.key || '').trim();
+                        return itemKey.toLowerCase() === key.toLowerCase();
+                    });
+                    if (found) {
+                        data = [found];
+                    }
+                }
 
-  </div>    <!-- modal de fallback (invisível por padrão) -->    <div id="modalFallback" style="display:none" class="modal" role="dialog" aria-modal="true">  
-    <div class="box">  
-      <div id="modalText">Não foi possível abrir o Free Fire automaticamente.</div>  
-      <button id="modalClose">Fechar</button>  
-    </div>  
-  </div>  <script>  
-  // abas  
-  const tabs = document.querySelectorAll('.tab');  
-  const contents = document.querySelectorAll('.content');  
-  tabs.forEach(tab => {  
-    tab.addEventListener('click', () => {  
-      tabs.forEach(t => t.classList.remove('active'));  
-      contents.forEach(c => c.style.display = 'none');  
-      tab.classList.add('active');  
-      document.getElementById(tab.dataset.tab).style.display = 'block';  
-    });  
-  });  
-  
-  // fov  
-  const fov = document.getElementById('fov');  
-  const fovValue = document.getElementById('fovValue');  
-  fov.addEventListener('input', () => fovValue.textContent = fov.value);  
-  
-  // modal de fallback  
-  const modal = document.getElementById('modalFallback');  
-  const modalText = document.getElementById('modalText');  
-  document.getElementById('modalClose').addEventListener('click', ()=> modal.style.display = 'none');  
-  
-  // função que tenta abrir o app Free Fire  
-  function tryOpenFreeFire() {  
-    const ua = navigator.userAgent || navigator.vendor || window.opera;  
-    const now = Date.now();  
-  
-    // tentativa padrão por scheme  
-    // esquemas comuns: freefire://  
-    // em Android, usamos também o formato intent: para abrir pacote  
-    try {  
-      if (/android/i.test(ua)) {  
-        // Intent para Android (tenta abrir o app pelo pacote; se não houver, o sistema geralmente pergunta ou redireciona)  
-        // pacotes do Free Fire podem variar por região; usamos um intent genérico com scheme freefire  
-        const intentUrl = 'intent://#Intent;scheme=freefire;package=com.dts.freefireth;end';  
-        window.location.href = intentUrl;  
-      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {  
-        // iOS: tenta abrir por scheme  
-        window.location.href = 'freefire://';  
-      } else {  
-        // Desktop / outros: tenta abrir pelo scheme; provavelmente não funcionará  
-        window.location.href = 'freefire://';  
-      }  
-    } catch (e) {  
-      // caso raro de exceção  
-      console.warn('Erro ao tentar abrir app:', e);  
-    }  
-  
-    // fallback: se após ~1.5s o app não abriu (o navegador permaneceu), mostramos modal de instrução.  
-    // Nota: não há forma 100% confiável de detectar se o app abriu em todos os navegadores.  
-    setTimeout(() => {  
-      // se o usuário ainda estiver na página (timestamp recente), mostramos aviso  
-      if (Date.now() - now < 2000) {  
-        modalText.textContent = 'Não foi possível abrir o Free Fire automaticamente. Verifique se o app está instalado no seu dispositivo.';  
-        modal.style.display = 'flex';  
-      }  
-    }, 1500);  
-  }  
-  
-  // ligação do botão  
-  document.getElementById('injetarBtn').addEventListener('click', (e) => {  
-    e.preventDefault();  
-    tryOpenFreeFire();  
-  });  
-// função de simulação para calibração  
-function calibrarMira() {  
-  // Aqui apenas simulamos um feedback visual  
-  const modal = document.getElementById('modalFallback');  
-  const modalText = document.getElementById('modalText');  
-  modalText.textContent = 'Calibração concluída com sucesso!';  
-  modal.style.display = 'flex';  
-}  
-  
-// ligação do botão "Calibrar Mira"  
-document.getElementById('calibrarBtn').addEventListener('click', (e) => {  
-  e.preventDefault();  
-  calibrarMira();  
-});  
-</script>
+                if (!data || data.length === 0) {
+                    showError("Key inválida.");
+                    return;
+                }
 
-</script><script>
-  const CORRECT_KEY = "GHOSTXITER1k"; // <-- coloque sua key aqui
+                const keyEntry = data[0];
+                currentKeyEntry = keyEntry;
 
-  function checkKey() {
-    const input = document.getElementById("keyInput").value;
-    const error = document.getElementById("keyError");
+                // trata active sendo booleano ou string:
+                const isActive = (val => {
+                    if (typeof val === 'boolean') return val;
+                    if (typeof val === 'number') return Boolean(val);
+                    if (typeof val === 'string') {
+                        const v = val.trim().toLowerCase();
+                        if (v === 'false' || v === '0' || v === '') return false;
+                        return true;
+                    }
+                    return Boolean(val);
+                })(keyEntry.active);
 
-    if (input === CORRECT_KEY) {
-      document.getElementById("keyScreen").style.display = "none";
-    } else {
-      error.style.display = "block";
-    }
-  }
-</script>
-  </body>  
-</html> 
+                if (!isActive) {
+                    showError("Esta key foi desativada.");
+                    return;
+                }
+
+                // se quiser, aqui você pode atualizar o registro (ex.: marcar como used) com fetch PUT/POST
+                liberarAcesso(keyEntry);
+            } catch (err) {
+                console.error(err);
+                showError("Erro ao validar a key. Verifique conexão ou CORS.");
+            }
+        });
+
+        function showError(text) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.innerText = text;
+            errorMessage.classList.add('show');
+            setTimeout(() => errorMessage.classList.remove('show'), 3500);
+        }
+
+        function cancelarMensagemErro() { document.getElementById('errorMessage').classList.remove('show'); }
+        function cancelLogin() { document.getElementById('passwordInput').value = ''; cancelarMensagemErro(); }
+        function liberarAcesso(keyEntry) {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('mainContainer').classList.add('show');
+            showToast('Login realizado com sucesso!');
+            // exemplo: mostrar info da key no console (pode remover)
+            console.log('Key válida:', keyEntry);
+        }
+        function showSection(sectionId, clickedButton) {
+            document.querySelectorAll('.option-block').forEach(s => s.classList.remove('open'));
+            document.getElementById(sectionId).classList.add('open');
+            document.querySelectorAll('.top-btn').forEach(b => b.classList.remove('active'));
+            if (clickedButton) clickedButton.classList.add('active');
+        }
+        function updatePrompt(checkbox, modName) { showToast(modName + (checkbox.checked ? " Ativado" : " Desativado")); }
+        function updateSliderValue(slider) { document.getElementById('aimSliderValue').innerText = slider.value; showToast('Fov Valor: ' + slider.value); }
+        function updatePromptSelect(select, label) { showToast(label + ': ' + select.options[select.selectedIndex].text); }
+        function toggleButton(btn, label) { btn.classList.toggle('selected'); showToast(label + ': ' + (btn.classList.contains('selected') ? 'Selecionado' : 'Desmarcado')); }
+        function injectFiles() { showToast('Ação executada!'); }
+        function showToast(message) {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.classList.add('toast'); toast.innerText = message; toastContainer.appendChild(toast);
+            toast.addEventListener('animationend', () => { if(toastContainer.contains(toast)) toastContainer.removeChild(toast); });
+        }
+        const fpsElement = document.getElementById('fpsDisplay');
+        if(fpsElement){ setInterval(()=>{ fpsElement.innerText = Math.floor(Math.random()*(60-50+1)+50)+' FPS'; }, 200); }
+        document.addEventListener('DOMContentLoaded',()=>{ showSection('aimbotOptions', document.querySelector('.top-btn')); });
+    </script>
+</body>
+</html>
