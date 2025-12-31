@@ -1,0 +1,237 @@
+<!DOCTYPE html>  <html lang="pt-BR">  
+<head>  
+<meta charset="utf-8" />  
+<meta name="viewport" content="width=device-width,initial-scale=1" />  
+<title> GHOST XITER - Auxílio </title>  
+<style>  
+  :root {  
+    --pink: #ff4db4;  
+    --dark-bg: #0b0b10;  
+    --panel-bg: #1a1825;  
+    --text: #ffffff;  
+    --radius: 18px;  
+  }  
+  *{box-sizing:border-box}  
+  body{  
+    margin:0;  
+    min-height:100vh;  
+    display:flex;  
+    align-items:center;  
+    justify-content:center;  
+    background:var(--dark-bg);  
+    color:var(--text);  
+    font-family: "Poppins", system-ui, sans-serif;  
+  }  
+  .container{  
+    display:flex;  
+    background:var(--panel-bg);  
+    border-radius:var(--radius);  
+    box-shadow:0 0 40px var(--pink);  
+    overflow:hidden;  
+    width:380px;  
+  }  
+  .sidebar{  
+    display:flex;  
+    flex-direction:column;  
+    background:#2a2736;  
+    padding:20px 10px;  
+    gap:14px;  
+    min-width:90px;  
+    align-items:center;  
+  }  
+  .tab{  
+    background:none;border:none;color:var(--text);font-weight:600;padding:10px 0;width:100%;border-radius:10px;cursor:pointer;  
+  }  
+  .tab.active{background:var(--pink);color:#111}  
+  .content{flex:1;padding:25px;background:#181624}  
+  h1{text-align:center;color:var(--pink);font-size:1.6rem;text-transform:lowercase;margin:0 0 1.4rem}  
+  label{display:block;margin:6px 0;font-size:0.95rem}  
+  input[type="checkbox"]{accent-color:var(--pink);margin-right:6px}  
+  .fov{margin-top:12px}  
+  .fov span{color:var(--pink)}  
+  input[type="range"]{width:100%;accent-color:var(--pink);cursor:pointer}  
+  select{width:100%;background:#12101a;border:1px solid var(--pink);border-radius:8px;color:var(--text);padding:8px;margin-top:10px;font-size:0.9rem}  
+  button.inject{width:100%;background:linear-gradient(90deg,#ff4db4,#ff86cc);border:none;color:#111;font-weight:700;padding:14px;border-radius:10px;margin-top:18px;cursor:pointer;transition:transform .2s,box-shadow .3s}  
+  button.inject:hover{transform:scale(1.03);box-shadow:0 0 20px rgba(255,77,180,0.5)}  
+  @keyframes neonPulse{0%,100%{box-shadow:0 0 20px rgba(255,77,180,0.3)}50%{box-shadow:0 0 40px rgba(255,77,180,0.7)}}  
+  .container{animation:neonPulse 3s infinite ease-in-out}  
+  @media (max-width:480px){.container{width:90%;flex-direction:column}.sidebar{flex-direction:row;padding:10px}.tab{flex:1;text-align:center}}  
+  /* simples modal de fallback */  
+  .modal{  
+    position:fixed;left:0;top:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);  
+  }  
+  .modal .box{background:#11101a;padding:18px;border-radius:12px;border:1px solid var(--pink);max-width:360px;text-align:center}  
+  .modal button{margin-top:12px;padding:10px 14px;border-radius:8px;border:none;background:var(--pink);color:#111;font-weight:700;cursor:pointer}  
+</style>  
+</head>  <div id="keyScreen" style="
+  position:fixed;
+  inset:0;
+  background:#0b0b10;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-family:Poppins, sans-serif;
+">
+
+  <h2 style="color:#ff4db4;">Insira sua KEY</h2>
+
+  <input id="keyInput" type="password" placeholder="Digite a Key" 
+    style="padding:12px;border:2px solid #ff4db4;
+    background:#181624;color:white;border-radius:10px;
+    width:70%;max-width:250px;text-align:center;">
+
+  <button onclick="checkKey()"
+    style="margin-top:15px;background:#ff4db4;
+    border:none;padding:10px 20px;border-radius:10px;
+    font-weight:700;cursor:pointer;color:#111;">
+      ENTRAR
+  </button>
+
+  <p id="keyError" style="color:red;margin-top:10px;display:none;">
+    Key inválida!
+  </p>
+
+</div>
+<body> 
+
+  </p>
+</div> 
+  <div class="container" role="application" aria-label="Painel sleepffz">  
+    <div class="sidebar" aria-hidden="false">  
+      <button class="tab active" data-tab="aimbot">aimbot</button>  
+      <button class="tab" data-tab="info">info</button>  
+    </div>  <div class="content" id="aimbot" style="display:block;">  
+  <h1>GHOST XITER Cheats - Auxílio</h1>  
+
+  <label><input type="checkbox"> Ativar Aimbot</label>  
+  <label><input type="checkbox"> NoRecoil</label>  
+  <label><input type="checkbox"> Aumentar precisão</label>  
+  <label><input type="checkbox"> Ignorar derrubados</label>  
+
+  <div class="fov" aria-live="polite">  
+    fov: [ <span id="fovValue">90.7</span> ]  
+    <input type="range" id="fov" min="10" max="180" step="0.1" value="90.7" aria-valuemin="10" aria-valuemax="180" />  
+  </div>  
+
+  <select aria-label="Alvo">  
+    <option>Cabeça</option>  
+    <option>Pescoço</option>  
+    <option>Corpo</option>  
+  </select>
+
+<button class="inject" id="calibrarBtn">CALIBRAR MIRA</button>
+
+<button class="inject" id="injetarBtn">INJETAR</button>  
+</div>  
+
+<div class="content" id="info" style="display:none;">  
+  <h1>Informações</h1>  
+  <p><strong>Painel auxílio criado por GHOST XITER
+deixe o painel em segundo plano painel usuário Android </strong></p>  
+  <p>   
+</div>
+
+  </div>    <!-- modal de fallback (invisível por padrão) -->    <div id="modalFallback" style="display:none" class="modal" role="dialog" aria-modal="true">  
+    <div class="box">  
+      <div id="modalText">Não foi possível abrir o Free Fire automaticamente.</div>  
+      <button id="modalClose">Fechar</button>  
+    </div>  
+  </div>  <script>  
+  // abas  
+  const tabs = document.querySelectorAll('.tab');  
+  const contents = document.querySelectorAll('.content');  
+  tabs.forEach(tab => {  
+    tab.addEventListener('click', () => {  
+      tabs.forEach(t => t.classList.remove('active'));  
+      contents.forEach(c => c.style.display = 'none');  
+      tab.classList.add('active');  
+      document.getElementById(tab.dataset.tab).style.display = 'block';  
+    });  
+  });  
+  
+  // fov  
+  const fov = document.getElementById('fov');  
+  const fovValue = document.getElementById('fovValue');  
+  fov.addEventListener('input', () => fovValue.textContent = fov.value);  
+  
+  // modal de fallback  
+  const modal = document.getElementById('modalFallback');  
+  const modalText = document.getElementById('modalText');  
+  document.getElementById('modalClose').addEventListener('click', ()=> modal.style.display = 'none');  
+  
+  // função que tenta abrir o app Free Fire  
+  function tryOpenFreeFire() {  
+    const ua = navigator.userAgent || navigator.vendor || window.opera;  
+    const now = Date.now();  
+  
+    // tentativa padrão por scheme  
+    // esquemas comuns: freefire://  
+    // em Android, usamos também o formato intent: para abrir pacote  
+    try {  
+      if (/android/i.test(ua)) {  
+        // Intent para Android (tenta abrir o app pelo pacote; se não houver, o sistema geralmente pergunta ou redireciona)  
+        // pacotes do Free Fire podem variar por região; usamos um intent genérico com scheme freefire  
+        const intentUrl = 'intent://#Intent;scheme=freefire;package=com.dts.freefireth;end';  
+        window.location.href = intentUrl;  
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {  
+        // iOS: tenta abrir por scheme  
+        window.location.href = 'freefire://';  
+      } else {  
+        // Desktop / outros: tenta abrir pelo scheme; provavelmente não funcionará  
+        window.location.href = 'freefire://';  
+      }  
+    } catch (e) {  
+      // caso raro de exceção  
+      console.warn('Erro ao tentar abrir app:', e);  
+    }  
+  
+    // fallback: se após ~1.5s o app não abriu (o navegador permaneceu), mostramos modal de instrução.  
+    // Nota: não há forma 100% confiável de detectar se o app abriu em todos os navegadores.  
+    setTimeout(() => {  
+      // se o usuário ainda estiver na página (timestamp recente), mostramos aviso  
+      if (Date.now() - now < 2000) {  
+        modalText.textContent = 'Não foi possível abrir o Free Fire automaticamente. Verifique se o app está instalado no seu dispositivo.';  
+        modal.style.display = 'flex';  
+      }  
+    }, 1500);  
+  }  
+  
+  // ligação do botão  
+  document.getElementById('injetarBtn').addEventListener('click', (e) => {  
+    e.preventDefault();  
+    tryOpenFreeFire();  
+  });  
+// função de simulação para calibração  
+function calibrarMira() {  
+  // Aqui apenas simulamos um feedback visual  
+  const modal = document.getElementById('modalFallback');  
+  const modalText = document.getElementById('modalText');  
+  modalText.textContent = 'Calibração concluída com sucesso!';  
+  modal.style.display = 'flex';  
+}  
+  
+// ligação do botão "Calibrar Mira"  
+document.getElementById('calibrarBtn').addEventListener('click', (e) => {  
+  e.preventDefault();  
+  calibrarMira();  
+});  
+</script>
+
+</script><script>
+  const CORRECT_KEY = "GHOSTXITER1k"; // <-- coloque sua key aqui
+
+  function checkKey() {
+    const input = document.getElementById("keyInput").value;
+    const error = document.getElementById("keyError");
+
+    if (input === CORRECT_KEY) {
+      document.getElementById("keyScreen").style.display = "none";
+    } else {
+      error.style.display = "block";
+    }
+  }
+</script>
+  </body>  
+</html> 
