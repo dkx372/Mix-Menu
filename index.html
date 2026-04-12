@@ -242,15 +242,22 @@ async function login(){
     try{
         const res = await fetch("https://69d806379c5ebb0918c8b532.mockapi.io/Keys");
         if(!res.ok) throw new Error("erro");
+
         const data = await res.json();
 
-        const valida = data.find(k => k.key === key && k.status === "ativa");
+        // 🔥 VALIDAÇÃO MELHORADA
+        const valida = data.find(k => 
+            k.key?.toString().trim() === key &&
+            (!k.status || k.status.toLowerCase() === "ativa")
+        );
+
         if(!valida){
             error.innerText="Key inválida ou expirada";
             error.style.display="block";
             return;
         }
 
+        // LOGIN OK
         document.getElementById('loginContainer').style.display="none";
         document.getElementById('mainContainer').classList.add('show');
 
