@@ -83,7 +83,6 @@ font-weight:bold;
 .option-block{display:none}
 .option-block.open{display:block}
 
-/* TOGGLE */
 .toggle{
 display:flex;
 justify-content:space-between;
@@ -161,7 +160,6 @@ text-align:center;
 <button class="top-btn" onclick="showTab('misc',this)">MISC</button>
 </div>
 
-<!-- AIM -->
 <div class="option-block open" id="aim">
 <div class="toggle"><span>Aimbot Legit</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
 <div class="toggle"><span>Recoil Trick</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
@@ -178,7 +176,6 @@ text-align:center;
 <input type="range" min="0" max="360">
 </div>
 
-<!-- SENSI -->
 <div class="option-block" id="sensi">
 <select id="marca" onchange="updateModelos()">
 <option>Selecione a marca</option>
@@ -200,7 +197,6 @@ text-align:center;
 </select>
 </div>
 
-<!-- EXTRA -->
 <div class="option-block" id="extra">
 <p><b>Versão:</b> 1.0</p>
 <select>
@@ -210,7 +206,6 @@ text-align:center;
 <button class="inject-btn">INJETAR</button>
 </div>
 
-<!-- MISC -->
 <div class="option-block" id="misc">
 <div class="toggle"><span>No Recoil</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
 <div class="toggle"><span>Otimizar FPS</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
@@ -227,7 +222,6 @@ TikTok: @dkzaadhaa
 </div>
 
 <script>
-/* LOGIN MOCKAPI */
 async function login(){
     const key = document.getElementById('passwordInput').value.trim();
     const error = document.getElementById('errorMessage');
@@ -245,11 +239,14 @@ async function login(){
 
         const data = await res.json();
 
-        // 🔥 VALIDAÇÃO MELHORADA
-        const valida = data.find(k => 
-            k.key?.toString().trim() === key &&
-            (!k.status || k.status.toLowerCase() === "ativa")
-        );
+        // 🔥 VALIDAÇÃO CORRIGIDA 100%
+        const valida = data.find(k => {
+            const apiKey = String(k.key).trim();
+            const userKey = String(key).trim();
+            const status = String(k.status).trim().toLowerCase();
+
+            return apiKey === userKey && status === "ativa";
+        });
 
         if(!valida){
             error.innerText="Key inválida ou expirada";
@@ -257,7 +254,6 @@ async function login(){
             return;
         }
 
-        // LOGIN OK
         document.getElementById('loginContainer').style.display="none";
         document.getElementById('mainContainer').classList.add('show');
 
@@ -267,7 +263,6 @@ async function login(){
     }
 }
 
-/* TABS */
 function showTab(id,btn){
 document.querySelectorAll('.option-block').forEach(o=>o.classList.remove('open'));
 document.getElementById(id).classList.add('open');
@@ -275,7 +270,6 @@ document.querySelectorAll('.top-btn').forEach(b=>b.classList.remove('active'));
 btn.classList.add('active');
 }
 
-/* MODELOS */
 function updateModelos(){
 const modelos={
 Samsung:["A10","A20","A30","S20","S21","S22"],
@@ -293,7 +287,6 @@ modelo.appendChild(o);
 });
 }
 
-/* COR */
 document.getElementById('colorPicker').oninput=e=>{
 document.documentElement.style.setProperty('--primary',e.target.value);
 }
